@@ -34,7 +34,6 @@ end, false)
 exports.ox_target:addBoxZone({
     coords = Config.pedPosition+vector3(0,0,1.2),
     size = vector3(2.0, 2.0, 2.0),
-    radius = 0.3,
     drawSprite = true,
     options = {
         {

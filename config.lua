@@ -1,3 +1,6 @@
+-- Welcome to the config file of the job center script
+-- Join the discord for more informations: https://discord.gg/JQruakP5BM
+
 Config = {}
 
 Config.useLastESX = true -- If you use the last version of ESX, set this to true, else set this to false
