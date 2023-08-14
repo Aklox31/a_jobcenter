@@ -31,7 +31,19 @@ RegisterCommand('jobcenter', function()
     jobCenter()
 end, false)
 
-function setGPS(pos, label)
-    SetNewWaypoint(pos.x, pos.y)
-    ESX.ShowNotification('GPS set to '..label)
-end
+exports.ox_target:addBoxZone({
+    coords = Config.pedPosition+vector3(0,0,1.2),
+    size = vector3(2.0, 2.0, 2.0),
+    radius = 0.3,
+    drawSprite = true,
+    options = {
+        {
+            name = "open_job_center",
+            icon = 'fas fa-clipboard-list',
+            label = 'Open a job center',
+            onSelect = function(data)
+                jobCenter()
+            end
+        }
+    }
+})
