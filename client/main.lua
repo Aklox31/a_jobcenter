@@ -11,25 +11,25 @@ end
 
 
 local function jobCenter()
-        local options = {}
-        for _, info in pairs(Config.jobFarms) do
-            options[#options+1] = {
-                title = info.label,
-                description = info.description,
-                onSelect = function ()
-                    setGPS(info.posInGPS, info.label)
-                end
-            }
-        end
-
-        lib.registerContext({
-            id = 'job_center_menu',
-            title = 'Job Center',
-            options = options,
-        })
-
-        lib.showContext('job_center_menu')
+    local options = {}
+    for _, info in pairs(Config.jobFarms) do
+        options[#options+1] = {
+        title = info.label,
+            description = info.description,
+            onSelect = function ()
+                setGPS(info.posInGPS, info.label)
+            end
+        }
     end
+
+    lib.registerContext({
+        id = 'job_center_menu',
+        title = 'Job Center',
+        options = options,
+    })
+
+    lib.showContext('job_center_menu')
+end
 
 -- Devmode (remove this if you don't want to use it)
 if Config.devMode == true then
