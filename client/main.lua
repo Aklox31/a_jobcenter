@@ -1,9 +1,14 @@
-if Config.useLastESX == true then
-    ESX = exports['es_extended']:getSharedObject()
-else
-    ESX = nil
-    TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+if Config.Framework == 'QBCore' then
+    QBCore = exports['qb-core']:getModule('QBCore')
+elseif Config.Framework == 'ESX' then
+    if Config.useLastESX == true then
+        ESX = exports['es_extended']:getSharedObject()
+    else
+        ESX = nil
+        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+    end
 end
+
 
 local function jobCenter()
         local options = {}
@@ -26,10 +31,13 @@ local function jobCenter()
         lib.showContext('job_center_menu')
     end
 
-RegisterCommand('jobcenter', function()
-    print('jobcenter')
-    jobCenter()
-end, false)
+-- Devmode (remove this if you don't want to use it)
+if Config.devMode == true then
+    RegisterCommand('jobcenter', function()
+        print('jobcenter')
+        jobCenter()
+    end, false)
+end
 
 exports.ox_target:addBoxZone({
     coords = Config.pedPosition+vector3(0,0,1.2),
