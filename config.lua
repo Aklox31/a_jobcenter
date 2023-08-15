@@ -3,8 +3,8 @@
 
 Config = {}
 
-Config.Framework = 'ESX' -- If you use QBCore, set this to 'QBCore', else set this to 'ESX'
 Config.useLastESX = true -- If you use the last version of ESX, set this to true, else set this to false
+Config.useQBCore = false -- If you use QBCore, set this to true, else set this to false
 Config.ped = "a_m_m_eastsa_02"
 Config.pedPosition = vec3(-269.291870, -956.013550, 30.223133)
 Config.pedHeading = 201.315

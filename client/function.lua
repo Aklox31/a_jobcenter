@@ -1,19 +1,22 @@
-if Config.Framework == 'QBCore' then
-    QBCore = exports['qb-core']:getModule('QBCore')
-elseif Config.Framework == 'ESX' then
+CreateThread(function()
     if Config.useLastESX == true then
         ESX = exports['es_extended']:getSharedObject()
-    else
-        ESX = nil
-        TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
+    elseif Config.useLastESX == false then
+        ESX = nil 
+        TriggerEvent('esx:getSharedObject', function (obj)
+            obj = ESX
+        end)
     end
-end
+    if Config.useQBCore == 'QBCore' then
+        QBCore = exports['qb-core']:getModule('QBCore')
+    end
+end)
 
 function setGPS(pos, label)
     SetNewWaypoint(pos.x, pos.y)
-    if Config.Framework == 'QBCore' then
+    if Config.useQBCore == true then
         QBCore.Functions.Notify('GPS set to '..label, 'success')
-    elseif Config.Framework == 'ESX' then
+    elseif Config.useLastESX == true then
         ESX.ShowNotification('GPS set to '..label)
     end
 end
